@@ -28,18 +28,19 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	while (read_line > 0)
-	{
-		content = NULL;
-		read_line = getline(&content, &size, file);
-		bus.content = content;
-		counter++;
-		if (read_line > 0)
 		{
+		 read_line = getline(&content, &size, file);
+       		 bus.content = content;
+       		 counter++;
+		if (read_line > 0)
+			{
 			execute(content, &stack, counter, file);
+			}
 		}
-		free(content);
-	}
-	free_stack(stack);
-	fclose(file);
-return (0);
+	 	free(content);
+		content = NULL;
+	
+		free_stack(stack);
+		fclose(file);
+	return (0);
 }
